@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1590210142272
+Build-Jdk: 1.8.0_241
+Built-By: devvala
+Bundle-ManifestVersion: 2
+Bundle-Name: org.wso2.carbon.group.mgt
+Bundle-SymbolicName: org.wso2.carbon.group.mgt
+Bundle-Version: 4.2.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.wso2.carbon.group.mgt;uses:="org.wso2.carbon.group.m
+ gt.data";version="4.2.0",org.wso2.carbon.group.mgt.dao;uses:="org.wso2.
+ carbon.group.mgt.data";version="4.2.0",org.wso2.carbon.group.mgt.data;v
+ ersion="4.2.0",org.wso2.carbon.group.mgt.util;version="4.2.0"
+Import-Package: javax.naming;resolution:=optional,javax.naming.directory
+ ;resolution:=optional,org.apache.commons.dbcp2;resolution:=optional;ver
+ sion="[2.7,3)",org.apache.commons.logging;resolution:=optional;version=
+ "[1.2,2)",org.wso2.carbon.group.mgt;resolution:=optional,org.wso2.carbo
+ n.group.mgt.dao;resolution:=optional,org.wso2.carbon.group.mgt.data;res
+ olution:=optional,org.wso2.carbon.group.mgt.util;resolution:=optional
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.6))"
+Tool: Bnd-4.2.0.201903051501

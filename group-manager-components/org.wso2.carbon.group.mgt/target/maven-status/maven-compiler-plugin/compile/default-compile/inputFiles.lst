@@ -1,0 +1,11 @@
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/util/DatabaseUtil.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/GroupManager.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/dao/GroupDao.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/dao/RoleDao.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/util/ConfigUtil.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/data/Group.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/data/User.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/data/Role.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/util/FileUtil.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/PropertyFileReader.java
+/home/devvala/valaCode/SSO/group-manager/group-manager-components/org.wso2.carbon.group.mgt/src/main/java/org/wso2/carbon/group/mgt/dao/UserDao.java

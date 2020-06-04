@@ -1,0 +1,11 @@
+org/wso2/carbon/group/mgt/PropertyFileReader.class
+org/wso2/carbon/group/mgt/util/FileUtil.class
+org/wso2/carbon/group/mgt/dao/UserDao.class
+org/wso2/carbon/group/mgt/data/Group.class
+org/wso2/carbon/group/mgt/data/User.class
+org/wso2/carbon/group/mgt/GroupManager.class
+org/wso2/carbon/group/mgt/dao/GroupDao.class
+org/wso2/carbon/group/mgt/data/Role.class
+org/wso2/carbon/group/mgt/util/ConfigUtil.class
+org/wso2/carbon/group/mgt/dao/RoleDao.class
+org/wso2/carbon/group/mgt/util/DatabaseUtil.class
