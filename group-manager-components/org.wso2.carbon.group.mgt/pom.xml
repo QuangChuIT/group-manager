@@ -48,6 +48,18 @@
             <artifactId>commons-pool2</artifactId>
             <version>2.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon.identity.framework</groupId>
+            <artifactId>org.wso2.carbon.user.mgt</artifactId>
+            <scope>provided</scope>
+            <version>5.14.97</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.user.core</artifactId>
+            <scope>provided</scope>
+            <version>4.5.1</version>
+        </dependency>
 
     </dependencies>
 </project>

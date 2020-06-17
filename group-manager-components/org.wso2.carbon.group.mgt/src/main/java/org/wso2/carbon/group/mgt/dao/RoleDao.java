@@ -2,21 +2,17 @@ package org.wso2.carbon.group.mgt.dao;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.group.mgt.PropertyFileReader;
 import org.wso2.carbon.group.mgt.data.Role;
 import org.wso2.carbon.group.mgt.util.DatabaseUtil;
+import org.wso2.carbon.user.mgt.UserAdmin;
+import org.wso2.carbon.user.mgt.common.FlaggedName;
 
-import javax.naming.Context;
-import javax.naming.NamingEnumeration;
-import javax.naming.NamingException;
-import javax.naming.directory.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class RoleDao {
     private static final Log log = LogFactory.getLog(RoleDao.class);
@@ -76,7 +72,7 @@ public class RoleDao {
 
     public Role[] getAllRole() {
         try {
-            return doLookup("");
+            return doLookup("*");
         } catch (Exception e) {
             log.error("Error while accessing the database to load RPs.", e);
         }
@@ -85,57 +81,19 @@ public class RoleDao {
 
     private Role[] doLookup(String filter) throws Exception {
         Role[] arrRole = null;
-        String providerUrl = PropertyFileReader.readPropertyFile().getProperty("LDAP_PROVIDER_URL");
-        Properties properties = new Properties();
-        properties.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        properties.put(Context.PROVIDER_URL, providerUrl);
-        properties.put(Context.SECURITY_AUTHENTICATION,"simple");
-        properties.put(Context.SECURITY_PRINCIPAL,"uid=admin,ou=system");
-        properties.put(Context.SECURITY_CREDENTIALS,"admin");
-
-        try {
-            String[] returnedAtts = new String[]{"cn"};
-            DirContext context = new InitialDirContext(properties);
-            SearchControls searchCtrls = new SearchControls();
-            searchCtrls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-            searchCtrls.setReturningAttributes(returnedAtts);
-            String finalFilter = "(&(objectClass=groupOfNames)(cn=*))";
-            if(filter != null && !"".equals(filter.trim())) {
-                finalFilter = "(&(objectClass=groupOfNames)(cn=*" + filter + "))";
+        List<Role> roles = new ArrayList<Role>();
+        UserAdmin userAdmin = new UserAdmin();
+        FlaggedName[] flaggedNames = userAdmin.getAllRolesNames(filter, -1);
+        if(flaggedNames != null && flaggedNames.length > 1) {
+            for(int i = 0; i < flaggedNames.length - 1; i++) {
+                Role role = new Role(flaggedNames[i].getItemName());
+                roles.add(role);
             }
-
-            NamingEnumeration<SearchResult> values = context.search("ou=Groups,dc=wso2,dc=org", finalFilter, searchCtrls);
-            List<Role> roles = new ArrayList<Role>();
-            while (values.hasMoreElements())
-            {
-                SearchResult result = (SearchResult) values.next();
-                Attributes attribs = result.getAttributes();
-                if (null != attribs)
-                {
-                    if(attribs.get("cn") != null) {
-                        Role role = new Role((String)attribs.get("cn").get());
-                        roles.add(role);
-                    }
-                }
-            }
-            context.close();
-            if(roles.size() > 0) {
-                arrRole = new Role[roles.size()];
-                arrRole = roles.toArray(arrRole);
-            }
-        } catch (NamingException e) {
-            e.printStackTrace();
+        }
+        if(roles.size() > 0) {
+            arrRole = new Role[roles.size()];
+            arrRole = roles.toArray(arrRole);
         }
         return arrRole;
-    }
-
-    public static void main(String[] args) {
-        RoleDao roleDao = new RoleDao();
-        try{
-            Role[] roles = roleDao.doLookup("");
-            System.out.println("123");
-        }catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 }

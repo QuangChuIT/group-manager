@@ -2,21 +2,17 @@ package org.wso2.carbon.group.mgt.dao;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.group.mgt.PropertyFileReader;
 import org.wso2.carbon.group.mgt.data.User;
 import org.wso2.carbon.group.mgt.util.DatabaseUtil;
+import org.wso2.carbon.user.mgt.UserAdmin;
+import org.wso2.carbon.user.mgt.common.UserProfileClient;
 
-import javax.naming.Context;
-import javax.naming.NamingEnumeration;
-import javax.naming.NamingException;
-import javax.naming.directory.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class UserDao {
     private static final Log log = LogFactory.getLog(UserDao.class);
@@ -76,7 +72,7 @@ public class UserDao {
 
     public User[] getAllUser() {
         try {
-            return doLookup("");
+            return doLookup("*");
         } catch (Exception e) {
             log.error("Error while accessing the database to load RPs.", e);
         }
@@ -85,61 +81,32 @@ public class UserDao {
 
     private User[] doLookup(String filter) throws Exception {
         User[] arrUser = null;
-        String providerUrl = PropertyFileReader.readPropertyFile().getProperty("LDAP_PROVIDER_URL");
-        Properties properties = new Properties();
-        properties.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        properties.put(Context.PROVIDER_URL, providerUrl);
-        properties.put(Context.SECURITY_AUTHENTICATION,"simple");
-        properties.put(Context.SECURITY_PRINCIPAL,"uid=admin,ou=system");
-        properties.put(Context.SECURITY_CREDENTIALS,"admin");
+        List<User> users = new ArrayList<User>();
+        String domainName = "PRIMARY";  // get user from main user store
+        String finalFilter = domainName + "/" + filter;
+        String returnAtts = "uid,sn,mail,givenName";
 
         try {
-            String[] returnedAtts = new String[]{"uid", "sn", "mail","givenname"};
-            DirContext context = new InitialDirContext(properties);
-            SearchControls searchCtrls = new SearchControls();
-            searchCtrls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-            searchCtrls.setReturningAttributes(returnedAtts);
-            String finalFilter = "(&(objectClass=person)(uid=*))";
-            if(filter != null && !"".equals(filter.trim())) {
-                finalFilter = "(&(objectClass=person)(uid=*" + filter + "))";
-            }
 
-            NamingEnumeration<SearchResult> values = context.search("ou=Users,dc=wso2,dc=org", finalFilter, searchCtrls);
-            List<User> users = new ArrayList<User>();
-            while (values.hasMoreElements())
-            {
-                SearchResult result = (SearchResult) values.next();
-                Attributes attribs = result.getAttributes();
-
-                if (null != attribs)
-                {
-                    if(attribs.get("sn") != null && !("Service".equals(attribs.get("sn").get()))) {
-                        User user = new User();
-                        user.setFirstName(attribs.get("givenname") == null ? "" : (String)attribs.get("givenname").get());
-                        user.setUserName(attribs.get("sn") == null ? "" : (String)attribs.get("sn").get());
-                        user.setEmail(attribs.get("mail") == null ? "" : (String)attribs.get("mail").get());
-                        users.add(user);
-                    }
+            UserAdmin userAdmin = new UserAdmin();
+            UserProfileClient[] userProfileClients = userAdmin.exportUsers(finalFilter, -1, returnAtts);
+            if(userProfileClients != null && userProfileClients.length > 0) {
+                for(int i = 0; i < userProfileClients.length; i++) {
+                    User user = new User();
+                    user.setFirstName(userProfileClients[i].getUserPropertiesValue()[3]);
+                    user.setUserName(userProfileClients[i].getUserPropertiesValue()[1]);
+                    user.setEmail(userProfileClients[i].getUserPropertiesValue()[2]);
+                    users.add(user);
                 }
             }
-            context.close();
+
             if(users.size() > 0) {
                 arrUser = new User[users.size()];
                 arrUser = users.toArray(arrUser);
             }
-        } catch (NamingException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error(e.getMessage());
         }
         return arrUser;
-    }
-
-    public static void main(String[] args) {
-        UserDao userDao = new UserDao();
-        try{
-            User[] users = userDao.doLookup("");
-            System.out.println("123");
-        }catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 }
