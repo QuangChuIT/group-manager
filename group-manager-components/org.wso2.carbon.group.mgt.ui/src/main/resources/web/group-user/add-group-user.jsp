@@ -141,8 +141,8 @@
                                         for(User user : users) {
                                 %>
                                     <tr>
-                                        <td width="10%"><input type="checkbox" value="<%=user.getUserName() %>"></td>
-                                        <td width="30%"><%=user.getDisplayName() %></td>
+                                        <td width="10%"><input type="checkbox" value="<%=user.getLastName() %>"></td>
+                                        <td width="30%"><%=user.getUserName() %></td>
                                         <td width="60%"><%=user.getEmail() %></td>
                                     </tr>
                                                 </tbody>

@@ -177,8 +177,8 @@
                                                     for(User user : lstUserGroup) {
                                             %>
                                             <tr>
-                                                <td><input type="checkbox" value="<%=user.getUserName() %>" checked></td>
-                                                <td width="30%"><%=user.getDisplayName() %></td>
+                                                <td><input type="checkbox" value="<%=user.getLastName() %>" checked></td>
+                                                <td width="30%"><%=user.getUserName() %></td>
                                                 <td width="60%"><%=user.getEmail() %></td>
                                             </tr>
                                             <%
@@ -191,7 +191,7 @@
                                             %>
                                             <tr>
                                                 <td><input type="checkbox" value="<%=user.getUserName() %>"></td>
-                                                <td width="30%"><%=user.getDisplayName() %></td>
+                                                <td width="30%"><%=user.getUserName() %></td>
                                                 <td width="60%"><%=user.getEmail() %></td>
                                             </tr>
                                             <%

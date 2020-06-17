@@ -137,7 +137,7 @@
                                                     for(User user : usersOfGroup) {
                                             %>
                                             <tr>
-                                                <td width="40%"><%=user.getDisplayName() %></td>
+                                                <td width="40%"><%=user.getUserName() %></td>
                                                 <td width="60%"><%=user.getEmail() %></td>
                                             </tr>
                                             </tbody>

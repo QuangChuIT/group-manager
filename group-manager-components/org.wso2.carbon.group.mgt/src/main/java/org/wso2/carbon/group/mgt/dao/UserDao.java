@@ -94,7 +94,8 @@ public class UserDao {
                 for(int i = 0; i < userProfileClients.length; i++) {
                     User user = new User();
                     user.setFirstName(userProfileClients[i].getUserPropertiesValue()[3]);
-                    user.setUserName(userProfileClients[i].getUserPropertiesValue()[1]);
+                    user.setLastName(userProfileClients[i].getUserPropertiesValue()[1]);
+                    user.setUserName(userProfileClients[i].getUserPropertiesValue()[0]);
                     user.setEmail(userProfileClients[i].getUserPropertiesValue()[2]);
                     users.add(user);
                 }
