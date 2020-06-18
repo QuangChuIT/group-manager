@@ -12,8 +12,8 @@
 <%@ page import="javax.swing.*" %>
 <%@ page import="java.util.Date" %>
 
-
 <%
+    String errorMessage = "";
     Group group = new Group();
     try {
         String serverURL = CarbonUIUtil.getServerURL(config.getServletContext(), session);
@@ -34,24 +34,28 @@
                 listRole = roleNames.split(",");
                 String[] role1 = serviceClient.addRolesToGroup(groupId, listRole);
                 if(role1 != null && role1.length > 0) {
-                    String lstRoleName = "";
+                    StringBuilder lstRoleName = new StringBuilder();
                     for(String name : role1) {
-                        lstRoleName += name + ", ";
+                        lstRoleName.append(name).append(", ");
                     }
-                    JOptionPane.showMessageDialog(null, "Cannot add role " + lstRoleName + "to group ");
+                    errorMessage = "Cannot add role " + lstRoleName + "to group ";
                 }
             }
+            errorMessage = "Add group " + request.getParameter("groupName") + " success";
+            CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.INFO, request);
         } else {
             if(groupId == 0) {
-                JOptionPane.showMessageDialog(null, "Group with name " + group.getGroupName() + " is exists");
+                errorMessage = "Group with name " + group.getGroupName() + " is exists";
+                CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.WARNING, request);
             } else {
-                JOptionPane.showMessageDialog(null, "Cannot create group with name " + group.getGroupName());
+                errorMessage = "Cannot create group with name " + group.getGroupName();
+                CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.ERROR, request);
             }
         }
 
         //users = serviceClient.getUsers();
     } catch (Exception e) {
-        String message = "Error " + " : " + e.getMessage();
-        JOptionPane.showMessageDialog(null, message);
+        errorMessage = "Exception " + " : " + e.getMessage();
+        CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.ERROR, request);
     }
 %>

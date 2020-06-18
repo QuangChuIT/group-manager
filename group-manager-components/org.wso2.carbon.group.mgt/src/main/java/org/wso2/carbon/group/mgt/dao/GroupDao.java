@@ -143,7 +143,7 @@ public class GroupDao {
     }
 
     public int createGroup(Group group) {
-        if(getGroupsByName(group.getGroupName()) != null) {
+        if(checkGroupExists(group)) {
             return 0;
         }
         Connection connection = DatabaseUtil.getDBConnection();
@@ -439,5 +439,29 @@ public class GroupDao {
             DatabaseUtil.closeConnection(connection);
         }
         return result;
+    }
+
+    private boolean checkGroupExists(Group group) {
+        Connection connection = DatabaseUtil.getDBConnection();
+        PreparedStatement prepStmt = null;
+        ResultSet results = null;
+        Group rpdo = null;
+        try {
+            prepStmt = connection.prepareStatement("SELECT id, group_name, group_type, created_user, created_time FROM um_group WHERE group_name=? AND group_type = ?");
+            prepStmt.setString(1, group.getGroupName());
+            prepStmt.setString(2, group.getGroupType());
+            results = prepStmt.executeQuery();
+
+            if(results.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            log.error("Error while accessing the database to load RPs.", e);
+        } finally {
+            DatabaseUtil.closeResultSet(results);
+            DatabaseUtil.closeStatement(prepStmt);
+            DatabaseUtil.closeConnection(connection);
+        }
+        return false;
     }
 }

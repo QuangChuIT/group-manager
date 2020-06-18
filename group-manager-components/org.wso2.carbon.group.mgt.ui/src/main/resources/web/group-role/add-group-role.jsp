@@ -40,10 +40,8 @@
                     },
                     data: 'roleNames=' + roleNames,
                     async: false,
-                    success: function (responseText, status) {
-                        if (status === "success") {
-                            location.assign("list-group-role.jsp?");
-                        }
+                    success: function (responseText) {
+                        location.assign("list-group-role.jsp?ordinal=1");
                     }
                 });
             } else {

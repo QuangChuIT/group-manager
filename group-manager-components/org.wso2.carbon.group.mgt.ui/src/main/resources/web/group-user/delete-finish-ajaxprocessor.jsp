@@ -15,6 +15,7 @@
 
 
 <%
+    String errorMessage = "";
     try {
         String serverURL = CarbonUIUtil.getServerURL(config.getServletContext(), session);
         ConfigurationContext configContext =
@@ -25,10 +26,11 @@
         int groupId = Integer.parseInt(request.getParameter("groupId"));
         boolean isSuccess = serviceClient.deleteGroup(groupId);
         if(!isSuccess) {
-            JOptionPane.showMessageDialog(null, "Cannot delete group");
+            errorMessage = "Cannot delete group";
+            CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.ERROR, request);
         }
     } catch (Exception e) {
-        String message = "Error " + " : " + e.getMessage();
-        JOptionPane.showMessageDialog(null, message);
+        errorMessage = "Exception " + " : " + e.getMessage();
+        CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.ERROR, request);
     }
 %>

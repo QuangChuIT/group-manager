@@ -39,10 +39,8 @@
                     },
                     data: 'userNames=' + userNames,
                     async: false,
-                    success: function (responseText, status) {
-                        if (status === "success") {
-                            location.assign("list-group-user.jsp?");
-                        }
+                    success: function (responseText) {
+                        location.assign("list-group-user.jsp");
                     }
                 });
             } else {

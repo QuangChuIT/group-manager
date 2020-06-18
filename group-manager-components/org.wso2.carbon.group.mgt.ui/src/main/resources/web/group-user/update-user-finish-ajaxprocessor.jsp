@@ -15,6 +15,7 @@
 
 
 <%
+    String errorMessage = "";
     User[] usersOfGroup = null;
     String[] names = null;
     List<String> lstNewUserNames = new ArrayList<String>();
@@ -62,7 +63,7 @@
                 for(String name : userAddResult) {
                     lstUserName.append(name).append(", ");
                 }
-                JOptionPane.showMessageDialog(null, "Cannot add user " + lstUserName + "to group ");
+                errorMessage = "Cannot add user " + lstUserName + "to group";
             }
         }
 
@@ -74,12 +75,12 @@
                 for(String name : userRemoveResult) {
                     lstUserName.append(name).append(", ");
                 }
-                JOptionPane.showMessageDialog(null, "Cannot remove user " + lstUserName + "from group ");
+                errorMessage = "Cannot remove user " + lstUserName + "from group";
             }
         }
 
     } catch (Exception e) {
-        String message = "Error " + " : " + e.getMessage();
-        JOptionPane.showMessageDialog(null, message);
+        errorMessage = "Exception " + " : " + e.getMessage();
+        CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.ERROR, request);
     }
 %>

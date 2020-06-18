@@ -13,6 +13,7 @@
 <%@ page import="org.wso2.carbon.group.mgt.ui.GroupType" %>
 
 <%
+    String errorMessage = "";
     Role[] rolesOfGroup = null;
     String[] names = null;
     List<String> lstNewRoleNames = new ArrayList<String>();
@@ -60,7 +61,8 @@
                 for(String name : roleAddResult) {
                     lstRoleName.append(name).append(", ");
                 }
-                JOptionPane.showMessageDialog(null, "Cannot add role " + lstRoleName + "to group ");
+                errorMessage = "Cannot add role " + lstRoleName + "to group";
+                CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.ERROR, request);
             }
         }
 
@@ -72,12 +74,13 @@
                 for(String name : roleRemoveResult) {
                     lstRoleName.append(name).append(", ");
                 }
-                JOptionPane.showMessageDialog(null, "Cannot remove role " + lstRoleName + "from group ");
+                errorMessage = "Cannot remove role " + lstRoleName + "from group";
+                CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.ERROR, request);
             }
         }
 
     } catch (Exception e) {
-        String message = "Error " + " : " + e.getMessage();
-        JOptionPane.showMessageDialog(null, message);
+        errorMessage = "Exception " + " : " + e.getMessage();
+        CarbonUIMessage.sendCarbonUIMessage(errorMessage, CarbonUIMessage.ERROR, request);
     }
 %>

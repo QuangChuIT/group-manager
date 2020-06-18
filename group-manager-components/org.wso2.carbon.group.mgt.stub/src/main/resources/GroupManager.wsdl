@@ -43,20 +43,6 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getGroupsByType">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="groupType" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsByTypeResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="getAllUser">
                 <xs:complexType>
                     <xs:sequence/>
@@ -81,21 +67,6 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="addUsersToGroup">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="userNames" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="addUsersToGroupResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="removeUsersFromGroup">
                 <xs:complexType>
                     <xs:sequence>
@@ -105,6 +76,120 @@
                 </xs:complexType>
             </xs:element>
             <xs:element name="removeUsersFromGroupResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getListRoleOfGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getListRoleOfGroupResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2161:Role"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRoleByName">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="roleName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRoleByNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Role"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeRolesFromGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="roleNames" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeRolesFromGroupResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUserByName">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUserByNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:User"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsByType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="groupType" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsByTypeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsByName">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="groupName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsByNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsByIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addUsersToGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="userNames" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addUsersToGroupResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
@@ -137,91 +222,6 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="removeRolesFromGroup">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="roleNames" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="removeRolesFromGroupResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getListRoleOfGroup">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getListRoleOfGroupResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2161:Role"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getUserByName">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getUserByNameResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:User"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getRoleByName">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="roleName" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getRoleByNameResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Role"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsByName">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="groupName" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsByNameResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsById">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsByIdResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -315,17 +315,17 @@
     <wsdl:message name="getRoleByNameResponse">
         <wsdl:part name="parameters" element="ns:getRoleByNameResponse"/>
     </wsdl:message>
-    <wsdl:message name="removeRolesFromGroupRequest">
-        <wsdl:part name="parameters" element="ns:removeRolesFromGroup"/>
-    </wsdl:message>
-    <wsdl:message name="removeRolesFromGroupResponse">
-        <wsdl:part name="parameters" element="ns:removeRolesFromGroupResponse"/>
-    </wsdl:message>
     <wsdl:message name="getListRoleOfGroupRequest">
         <wsdl:part name="parameters" element="ns:getListRoleOfGroup"/>
     </wsdl:message>
     <wsdl:message name="getListRoleOfGroupResponse">
         <wsdl:part name="parameters" element="ns:getListRoleOfGroupResponse"/>
+    </wsdl:message>
+    <wsdl:message name="removeRolesFromGroupRequest">
+        <wsdl:part name="parameters" element="ns:removeRolesFromGroup"/>
+    </wsdl:message>
+    <wsdl:message name="removeRolesFromGroupResponse">
+        <wsdl:part name="parameters" element="ns:removeRolesFromGroupResponse"/>
     </wsdl:message>
     <wsdl:message name="addRolesToGroupRequest">
         <wsdl:part name="parameters" element="ns:addRolesToGroup"/>
@@ -345,17 +345,17 @@
     <wsdl:message name="getAllUserResponse">
         <wsdl:part name="parameters" element="ns:getAllUserResponse"/>
     </wsdl:message>
-    <wsdl:message name="getListUserOfGroupRequest">
-        <wsdl:part name="parameters" element="ns:getListUserOfGroup"/>
-    </wsdl:message>
-    <wsdl:message name="getListUserOfGroupResponse">
-        <wsdl:part name="parameters" element="ns:getListUserOfGroupResponse"/>
-    </wsdl:message>
     <wsdl:message name="getUserByNameRequest">
         <wsdl:part name="parameters" element="ns:getUserByName"/>
     </wsdl:message>
     <wsdl:message name="getUserByNameResponse">
         <wsdl:part name="parameters" element="ns:getUserByNameResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getListUserOfGroupRequest">
+        <wsdl:part name="parameters" element="ns:getListUserOfGroup"/>
+    </wsdl:message>
+    <wsdl:message name="getListUserOfGroupResponse">
+        <wsdl:part name="parameters" element="ns:getListUserOfGroupResponse"/>
     </wsdl:message>
     <wsdl:message name="deleteGroupRequest">
         <wsdl:part name="parameters" element="ns:deleteGroup"/>
@@ -402,13 +402,13 @@
             <wsdl:input message="ns:getRoleByNameRequest" wsaw:Action="urn:getRoleByName"/>
             <wsdl:output message="ns:getRoleByNameResponse" wsaw:Action="urn:getRoleByNameResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="removeRolesFromGroup">
-            <wsdl:input message="ns:removeRolesFromGroupRequest" wsaw:Action="urn:removeRolesFromGroup"/>
-            <wsdl:output message="ns:removeRolesFromGroupResponse" wsaw:Action="urn:removeRolesFromGroupResponse"/>
-        </wsdl:operation>
         <wsdl:operation name="getListRoleOfGroup">
             <wsdl:input message="ns:getListRoleOfGroupRequest" wsaw:Action="urn:getListRoleOfGroup"/>
             <wsdl:output message="ns:getListRoleOfGroupResponse" wsaw:Action="urn:getListRoleOfGroupResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeRolesFromGroup">
+            <wsdl:input message="ns:removeRolesFromGroupRequest" wsaw:Action="urn:removeRolesFromGroup"/>
+            <wsdl:output message="ns:removeRolesFromGroupResponse" wsaw:Action="urn:removeRolesFromGroupResponse"/>
         </wsdl:operation>
         <wsdl:operation name="addRolesToGroup">
             <wsdl:input message="ns:addRolesToGroupRequest" wsaw:Action="urn:addRolesToGroup"/>
@@ -422,13 +422,13 @@
             <wsdl:input message="ns:getAllUserRequest" wsaw:Action="urn:getAllUser"/>
             <wsdl:output message="ns:getAllUserResponse" wsaw:Action="urn:getAllUserResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="getListUserOfGroup">
-            <wsdl:input message="ns:getListUserOfGroupRequest" wsaw:Action="urn:getListUserOfGroup"/>
-            <wsdl:output message="ns:getListUserOfGroupResponse" wsaw:Action="urn:getListUserOfGroupResponse"/>
-        </wsdl:operation>
         <wsdl:operation name="getUserByName">
             <wsdl:input message="ns:getUserByNameRequest" wsaw:Action="urn:getUserByName"/>
             <wsdl:output message="ns:getUserByNameResponse" wsaw:Action="urn:getUserByNameResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getListUserOfGroup">
+            <wsdl:input message="ns:getListUserOfGroupRequest" wsaw:Action="urn:getListUserOfGroup"/>
+            <wsdl:output message="ns:getListUserOfGroupResponse" wsaw:Action="urn:getListUserOfGroupResponse"/>
         </wsdl:operation>
         <wsdl:operation name="deleteGroup">
             <wsdl:input message="ns:deleteGroupRequest" wsaw:Action="urn:deleteGroup"/>
@@ -513,8 +513,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="removeRolesFromGroup">
-            <soap:operation soapAction="urn:removeRolesFromGroup" style="document"/>
+        <wsdl:operation name="getListRoleOfGroup">
+            <soap:operation soapAction="urn:getListRoleOfGroup" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -522,8 +522,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getListRoleOfGroup">
-            <soap:operation soapAction="urn:getListRoleOfGroup" style="document"/>
+        <wsdl:operation name="removeRolesFromGroup">
+            <soap:operation soapAction="urn:removeRolesFromGroup" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -558,8 +558,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getListUserOfGroup">
-            <soap:operation soapAction="urn:getListUserOfGroup" style="document"/>
+        <wsdl:operation name="getUserByName">
+            <soap:operation soapAction="urn:getUserByName" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -567,8 +567,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getUserByName">
-            <soap:operation soapAction="urn:getUserByName" style="document"/>
+        <wsdl:operation name="getListUserOfGroup">
+            <soap:operation soapAction="urn:getListUserOfGroup" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -669,8 +669,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="removeRolesFromGroup">
-            <soap12:operation soapAction="urn:removeRolesFromGroup" style="document"/>
+        <wsdl:operation name="getListRoleOfGroup">
+            <soap12:operation soapAction="urn:getListRoleOfGroup" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -678,8 +678,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getListRoleOfGroup">
-            <soap12:operation soapAction="urn:getListRoleOfGroup" style="document"/>
+        <wsdl:operation name="removeRolesFromGroup">
+            <soap12:operation soapAction="urn:removeRolesFromGroup" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -714,8 +714,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getListUserOfGroup">
-            <soap12:operation soapAction="urn:getListUserOfGroup" style="document"/>
+        <wsdl:operation name="getUserByName">
+            <soap12:operation soapAction="urn:getUserByName" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -723,8 +723,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getUserByName">
-            <soap12:operation soapAction="urn:getUserByName" style="document"/>
+        <wsdl:operation name="getListUserOfGroup">
+            <soap12:operation soapAction="urn:getListUserOfGroup" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -825,8 +825,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="removeRolesFromGroup">
-            <http:operation location="removeRolesFromGroup"/>
+        <wsdl:operation name="getListRoleOfGroup">
+            <http:operation location="getListRoleOfGroup"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -834,8 +834,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getListRoleOfGroup">
-            <http:operation location="getListRoleOfGroup"/>
+        <wsdl:operation name="removeRolesFromGroup">
+            <http:operation location="removeRolesFromGroup"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -870,8 +870,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getListUserOfGroup">
-            <http:operation location="getListUserOfGroup"/>
+        <wsdl:operation name="getUserByName">
+            <http:operation location="getUserByName"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -879,8 +879,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getUserByName">
-            <http:operation location="getUserByName"/>
+        <wsdl:operation name="getListUserOfGroup">
+            <http:operation location="getListUserOfGroup"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>

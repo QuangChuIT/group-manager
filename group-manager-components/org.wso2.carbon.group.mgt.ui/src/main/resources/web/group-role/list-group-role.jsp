@@ -10,6 +10,7 @@
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 <script type="text/javascript" src="../admin/js/main.js"></script>
 
+<jsp:include page="../dialog/display_messages.jsp"/>
 <fmt:bundle basename="org.wso2.carbon.group.mgt.ui.i18n.Resources">
 
     <carbon:breadcrumb label="system.user.store"
@@ -61,22 +62,15 @@
                 }
             %>
             <table class="styledLeft" id="roleTable">
-
-                <%
-                    if (groups != null && groups.length > 0) {
-                %>
                 <thead>
                 <tr>
                     <th class="leftCol-big"><fmt:message key="group.name"/></th>
                     <th><fmt:message key="actions"/></th>
                 </tr>
                 </thead>
-                <%
-                    }
-                %>
                 <tbody>
                         <%
-                if (groups != null) {
+                if (groups != null && groups.length > 0) {
                     for (int i = 0; i < groups.length; i++) {
             %>
                 <tr>
