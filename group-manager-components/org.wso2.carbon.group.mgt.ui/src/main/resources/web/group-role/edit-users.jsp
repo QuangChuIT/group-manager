@@ -177,7 +177,7 @@
                                                     for(User user : lstUserGroup) {
                                             %>
                                             <tr>
-                                                <td><input type="checkbox" value="<%=user.getLastName() %>" checked></td>
+                                                <td><input type="checkbox" value="<%=user.getUserName() %>" checked></td>
                                                 <td width="30%"><%=user.getUserName() %></td>
                                                 <td width="60%"><%=user.getEmail() %></td>
                                             </tr>

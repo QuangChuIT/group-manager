@@ -31,61 +31,29 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="removeUsersFromGroup">
+            <xs:element name="getGroups">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="userNames" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="removeUsersFromGroupResponse">
+            <xs:element name="getGroupsByType">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="groupType" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getGroupsByName">
+            <xs:element name="getGroupsByTypeResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="groupName" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsByNameResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsById">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsByIdResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="addUsersToGroup">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="userNames" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="addUsersToGroupResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -113,17 +81,33 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getGroupsByType">
+            <xs:element name="addUsersToGroup">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="groupType" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="userNames" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getGroupsByTypeResponse">
+            <xs:element name="addUsersToGroupResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeUsersFromGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="userNames" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeUsersFromGroupResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -213,15 +197,31 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="getGroups">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getGroupsResponse">
+            <xs:element name="getGroupsByName">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
+                        <xs:element minOccurs="0" name="groupName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsByNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="groupId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupsByIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2161:Group"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -297,17 +297,17 @@
     <wsdl:message name="getGroupsByIdResponse">
         <wsdl:part name="parameters" element="ns:getGroupsByIdResponse"/>
     </wsdl:message>
-    <wsdl:message name="getGroupsByNameRequest">
-        <wsdl:part name="parameters" element="ns:getGroupsByName"/>
-    </wsdl:message>
-    <wsdl:message name="getGroupsByNameResponse">
-        <wsdl:part name="parameters" element="ns:getGroupsByNameResponse"/>
-    </wsdl:message>
     <wsdl:message name="getAllRoleRequest">
         <wsdl:part name="parameters" element="ns:getAllRole"/>
     </wsdl:message>
     <wsdl:message name="getAllRoleResponse">
         <wsdl:part name="parameters" element="ns:getAllRoleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getGroupsByNameRequest">
+        <wsdl:part name="parameters" element="ns:getGroupsByName"/>
+    </wsdl:message>
+    <wsdl:message name="getGroupsByNameResponse">
+        <wsdl:part name="parameters" element="ns:getGroupsByNameResponse"/>
     </wsdl:message>
     <wsdl:message name="getRoleByNameRequest">
         <wsdl:part name="parameters" element="ns:getRoleByName"/>
@@ -390,13 +390,13 @@
             <wsdl:input message="ns:getGroupsByIdRequest" wsaw:Action="urn:getGroupsById"/>
             <wsdl:output message="ns:getGroupsByIdResponse" wsaw:Action="urn:getGroupsByIdResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="getGroupsByName">
-            <wsdl:input message="ns:getGroupsByNameRequest" wsaw:Action="urn:getGroupsByName"/>
-            <wsdl:output message="ns:getGroupsByNameResponse" wsaw:Action="urn:getGroupsByNameResponse"/>
-        </wsdl:operation>
         <wsdl:operation name="getAllRole">
             <wsdl:input message="ns:getAllRoleRequest" wsaw:Action="urn:getAllRole"/>
             <wsdl:output message="ns:getAllRoleResponse" wsaw:Action="urn:getAllRoleResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getGroupsByName">
+            <wsdl:input message="ns:getGroupsByNameRequest" wsaw:Action="urn:getGroupsByName"/>
+            <wsdl:output message="ns:getGroupsByNameResponse" wsaw:Action="urn:getGroupsByNameResponse"/>
         </wsdl:operation>
         <wsdl:operation name="getRoleByName">
             <wsdl:input message="ns:getRoleByNameRequest" wsaw:Action="urn:getRoleByName"/>
@@ -486,8 +486,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getGroupsByName">
-            <soap:operation soapAction="urn:getGroupsByName" style="document"/>
+        <wsdl:operation name="getAllRole">
+            <soap:operation soapAction="urn:getAllRole" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -495,8 +495,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getAllRole">
-            <soap:operation soapAction="urn:getAllRole" style="document"/>
+        <wsdl:operation name="getGroupsByName">
+            <soap:operation soapAction="urn:getGroupsByName" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -642,8 +642,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getGroupsByName">
-            <soap12:operation soapAction="urn:getGroupsByName" style="document"/>
+        <wsdl:operation name="getAllRole">
+            <soap12:operation soapAction="urn:getAllRole" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -651,8 +651,8 @@
                 <soap12:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getAllRole">
-            <soap12:operation soapAction="urn:getAllRole" style="document"/>
+        <wsdl:operation name="getGroupsByName">
+            <soap12:operation soapAction="urn:getGroupsByName" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -798,8 +798,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getGroupsByName">
-            <http:operation location="getGroupsByName"/>
+        <wsdl:operation name="getAllRole">
+            <http:operation location="getAllRole"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -807,8 +807,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getAllRole">
-            <http:operation location="getAllRole"/>
+        <wsdl:operation name="getGroupsByName">
+            <http:operation location="getGroupsByName"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
